@@ -17,6 +17,13 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
   double result=0;
   
   final TextEditingController textEditingController= TextEditingController();
+
+  void convert(){
+    setState(() {
+                result=double.parse(textEditingController.text)*81;
+                  
+                });
+  }
   @override
   Widget build(BuildContext context){
     // return const Scaffold();
@@ -55,7 +62,7 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
               // child: const Text(
               Text(
                 
-                'INR ${result.toString()}',
+                'INR ${result!=0?result.toStringAsFixed(3): result.toStringAsFixed(0)}',
                 style: const TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
@@ -120,7 +127,7 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
             //appears like a text button
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: ElevatedButton(onPressed: (){
+              child: ElevatedButton(onPressed: convert,
                 //three modes: debug, release, profile
                 // if(kDebugMode){
                 //   print("Button is Pressed");
@@ -131,11 +138,12 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
                 // build(context);
                 // result=double.parse(textEditingController.text)*81;   can be inside setstate or out of set state but setstate is necessary
 
-                setState(() {
-                result=double.parse(textEditingController.text)*81;
+                // setState(() {
+                // result=double.parse(textEditingController.text)*81;
                   
-                });
-              }, 
+                // });
+                
+               
               style: ElevatedButton.styleFrom(
                 elevation: (15),
                 backgroundColor:(Color.fromARGB(255, 36, 35, 35)),
